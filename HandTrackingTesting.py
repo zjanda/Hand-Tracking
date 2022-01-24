@@ -4,6 +4,8 @@ from time import time
 import numpy as np
 from Header import load_model
 
+TIME_PER_HAND = 5
+
 FPS_UPDATE_INTERVAL = 1  # seconds
 
 cap = cv2.VideoCapture(0)
@@ -15,7 +17,6 @@ prevTime = 0
 currTime = time()
 last_update_time = time()
 fps = 0
-time_per_hand = 5
 
 # load model
 model = load_model('finalized_model.sav')

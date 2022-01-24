@@ -3,7 +3,9 @@ import mediapipe as mp
 from time import time
 import numpy as np
 
-write = False
+# write = False
+write = True
+TIME_PER_HAND = 10
 
 if write:
     with open('data.txt', 'w') as file:
@@ -20,14 +22,13 @@ prevTime = 0
 currTime = time()
 last_update_time = time()
 fps = 0
-time_per_hand = 5
 
 # Finger timer vars
 start = time()
 cur_time = time()
 multiplier = 1
 time_elapsed = int(cur_time - start)
-num_fingers = multiplier // time_per_hand
+num_fingers = multiplier // TIME_PER_HAND
 with open('data.txt', 'a') as file:
     while num_fingers <= 5:
         success, img = cap.read()
@@ -86,13 +87,13 @@ with open('data.txt', 'a') as file:
             start = time()
             multiplier += 1
         cur_time = time()
-        num_fingers = multiplier // time_per_hand
+        num_fingers = multiplier // TIME_PER_HAND
 
         write_string = 'w:1' if write else 'w:0'
 
         cv2.putText(img, str(write_string), (int(w - 160), int(h - 10)), cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 255), 3)
         cv2.putText(img, str(num_fingers), (int(w * .5), 70), cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 255), 3)
-        cv2.putText(img, str(time_elapsed % time_per_hand), (w - 60, 70), cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 255), 3)
+        cv2.putText(img, str(time_elapsed % TIME_PER_HAND), (w - 60, 70), cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 255), 3)
 
         # Draw threshold
         # cv2.rectangle(img, TH_TOPLEFT, TH_BOTRIGHT, (0, 0, 0), 10)
