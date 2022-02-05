@@ -1,0 +1,5 @@
+# Python 3.9.9
+numpy
+sklearn
+xgboost
+tensorflow

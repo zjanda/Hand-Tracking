@@ -3,8 +3,8 @@ import mediapipe as mp
 from time import time
 import numpy as np
 
-# write = False
-write = True
+write = False
+# write = True
 TIME_PER_HAND = 10
 
 if write:
