@@ -1,5 +1,9 @@
 # Python 3.9.9
 numpy
-sklearn
 xgboost
 tensorflow
+icecream
+mediapipe
+pickle
+tkinter
+cv2
